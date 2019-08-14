@@ -1,0 +1,133 @@
+<svg id="ground_copy" data-name="ground copy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="449" height="417.062" viewBox="0 0 449 417.062">
+  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""/>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?></metadata>
+<defs>
+    <style>
+      .cls-1 {
+        fill: #f5ac4b;
+      }
+
+      .cls-1, .cls-2, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #e5f1e5;
+      }
+
+      .cls-3 {
+        filter: url(#filter);
+      }
+
+      .cls-4 {
+        fill: #121729;
+      }
+
+      .cls-5 {
+        fill: #3e4561;
+      }
+
+      .cls-6 {
+        font-size: 10.674px;
+      }
+
+      .cls-6, .cls-7 {
+        fill: #fff;
+        font-family: Montserrat;
+        font-weight: 600;
+      }
+
+      .cls-7 {
+        font-size: 12px;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="2" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.449"/>
+      <feFlood result="flood" flood-opacity="0.73"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="_28" data-name="28">
+    <path class="cls-1" d="M238.071,84.77c86.214,0,158.392,55.931,185.639,131.236L336.437,303.55c-9.266-5.3-15.677-16.736-15.677-29.986a36.649,36.649,0,0,1,8.63-24.167l-63.372-63.766c-6.236,5.164-15.107,8.393-24.951,8.393-10.526,0-19.939-3.69-26.209-9.493l-63.765,64.85a36.645,36.645,0,0,1,8.645,24.183c0,12.89-6.069,24.061-14.927,29.539L55.7,214.272C83.291,144.717,151.858,84.77,238.071,84.77Zm1.688,347.46a42.844,42.844,0,1,0-42.644-42.843A42.827,42.827,0,0,0,239.759,432.23Zm0-134.48a20.871,20.871,0,1,0-20.774-20.871A20.863,20.863,0,0,0,239.759,297.75Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-2" d="M240.648,148.7l8.094,8.154L240.648,165l-8.093-8.154ZM124.64,263.906l8.093,8.154-8.093,8.154-8.094-8.154Zm232.876,0.585,8.093,8.153-8.093,8.155-8.094-8.155Zm-124.6,14.434h13.554v-4H232.921v4Zm0,104.308h13.554v8l-6.66,7.66-6.894-7.66v-8Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-2" d="M434.8,207.431L279.6,362.9a47.033,47.033,0,1,1-79.073-1.014L41.856,202.928l4.215-4.224L206.518,359.438l1.822,1.826-1.542,2.071a41.069,41.069,0,1,0,66.542.894l-1.444-2.053,1.77-1.773,156.914-157.2Z" transform="translate(-13 -17.969)"/>
+  </g>
+  <g id="t-shirt" class="cls-3">
+    <path class="cls-4" d="M209.072,237.308c8.038-4.463,15.765-8.906,23.575-11.311a42.5,42.5,0,0,1,15.972.1c7.977,2.327,15.579,6.424,23.991,11.214l-6.335,8.925-9.991-4.886H224.8l-9.388,4.886ZM224.8,268.892h31.551v1.558H224.8v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M225.14,230.962l8.808-3.911c0.993,1.406,3.7,2.389,6.885,2.389,3.205,0,5.914-.983,6.906-2.389l8.809,3.911v38.129H225.14V230.962Z" transform="translate(-13 -17.969)"/>
+    <text id="F" class="cls-6" transform="translate(222.431 236.593) scale(1.672 1.673)">F</text>
+  </g>
+  <g id="t-shirt_copy" data-name="t-shirt copy" class="cls-3">
+    <path class="cls-4" d="M287.664,146.991c8.038-4.463,15.765-8.906,23.575-11.31a42.485,42.485,0,0,1,15.973.1c7.976,2.327,15.578,6.424,23.99,11.214l-6.335,8.925-9.991-4.886H303.387L294,155.916Zm15.723,31.584h31.551v1.558H303.387v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M303.732,140.645l8.808-3.911c0.993,1.406,3.7,2.389,6.886,2.389,3.2,0,5.913-.983,6.905-2.389l8.809,3.911v38.129H303.732V140.645Z" transform="translate(-13 -17.969)"/>
+    <text id="_2B" data-name="2B" class="cls-7" transform="translate(293.059 147.948) scale(1.672 1.673)">2B</text>
+  </g>
+  <g id="t-shirt_copy_2" data-name="t-shirt copy 2" class="cls-3">
+    <path class="cls-4" d="M78.642,237.308c8.038-4.463,15.765-8.906,23.575-11.311a42.506,42.506,0,0,1,15.973.1c7.976,2.327,15.578,6.424,23.99,11.214l-6.335,8.925-9.991-4.886H94.366l-9.388,4.886Zm15.724,31.584h31.551v1.558H94.366v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M94.71,230.962l8.808-3.911c0.993,1.406,3.7,2.389,6.886,2.389,3.2,0,5.913-.983,6.906-2.389l8.808,3.911v38.129H94.71V230.962Z" transform="translate(-13 -17.969)"/>
+    <text id="_3B" data-name="3B" class="cls-6" transform="translate(85.313 238.265) scale(1.672 1.673)">3B</text>
+  </g>
+  <g id="t-shirt_copy_3" data-name="t-shirt copy 3" class="cls-3">
+    <path class="cls-4" d="M336.157,237.308c8.038-4.463,15.765-8.906,23.575-11.311a42.506,42.506,0,0,1,15.973.1c7.976,2.327,15.578,6.424,23.99,11.214l-6.335,8.925-9.991-4.886H351.881l-9.389,4.886Zm15.724,31.584h31.55v1.558h-31.55v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M352.225,230.962l8.808-3.911c0.993,1.406,3.7,2.389,6.885,2.389,3.2,0,5.914-.983,6.907-2.389l8.808,3.911v38.129H352.225V230.962Z" transform="translate(-13 -17.969)"/>
+    <text id="_1B" data-name="1B" class="cls-7" transform="translate(343.224 236.593) scale(1.672 1.673)">1B</text>
+  </g>
+  <g id="t-shirt_copy_4" data-name="t-shirt copy 4" class="cls-3">
+    <path class="cls-4" d="M209.072,352.713c8.038-4.463,15.765-8.906,23.575-11.31a42.459,42.459,0,0,1,15.972.1c7.977,2.327,15.579,6.424,23.991,11.214l-6.335,8.925-9.991-4.886H224.8l-9.388,4.886ZM224.8,384.3h31.551v1.558H224.8V384.3Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M225.14,346.367l8.808-3.911c0.993,1.406,3.7,2.389,6.885,2.389,3.205,0,5.914-.983,6.906-2.389l8.809,3.911V384.5H225.14V346.367Z" transform="translate(-13 -17.969)"/>
+    <text id="C" class="cls-6" transform="translate(220.759 351.997) scale(1.672 1.673)">C</text>
+  </g>
+  <g id="t-shirt_copy_5" data-name="t-shirt copy 5" class="cls-3">
+    <path class="cls-4" d="M141.7,369.438c8.038-4.463,15.765-8.906,23.574-11.31a42.485,42.485,0,0,1,15.973.1c7.976,2.327,15.578,6.424,23.991,11.214l-6.336,8.925-9.99-4.886H157.426l-9.388,4.886Zm15.723,31.584h31.551v1.558H157.426v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M157.77,363.092l8.809-3.911c0.992,1.406,3.7,2.389,6.885,2.389,3.205,0,5.914-.983,6.906-2.389l8.808,3.911v38.129H157.77V363.092Z" transform="translate(-13 -17.969)"/>
+    <text id="DH" class="cls-6" transform="translate(145.029 370.395) scale(1.672 1.673)">DH</text>
+  </g>
+  <g id="t-shirt_copy_6" data-name="t-shirt copy 6" class="cls-3">
+    <path class="cls-4" d="M108.742,148.663c8.038-4.462,15.764-8.906,23.574-11.31a42.506,42.506,0,0,1,15.973.1c7.976,2.328,15.578,6.425,23.99,11.214l-6.335,8.925-9.991-4.885H124.465l-9.388,4.885Zm15.723,31.584h31.551v1.558H124.465v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M124.809,142.317l8.809-3.911c0.992,1.407,3.7,2.389,6.885,2.389,3.205,0,5.913-.982,6.906-2.389l8.808,3.911v38.129H124.809V142.317Z" transform="translate(-13 -17.969)"/>
+    <text id="SS" class="cls-6" transform="translate(115.412 149.621) scale(1.672 1.673)">SS</text>
+  </g>
+  <g id="t-shirt_copy_7" data-name="t-shirt copy 7" class="cls-3">
+    <path class="cls-4" d="M13,96.917c8.038-4.462,15.765-8.906,23.575-11.31a42.488,42.488,0,0,1,15.973.1c7.976,2.327,15.578,6.425,23.99,11.214L70.2,105.842l-9.991-4.885H28.722l-9.388,4.885ZM28.722,128.5H60.273v1.558H28.722V128.5Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M29.067,90.571l8.808-3.911c0.993,1.406,3.7,2.389,6.885,2.389,3.2,0,5.914-.983,6.906-2.389l8.808,3.911V128.7H29.067V90.571Z" transform="translate(-13 -17.969)"/>
+    <text id="LF" class="cls-6" transform="translate(19.669 97.875) scale(1.672 1.673)">LF</text>
+  </g>
+  <g id="t-shirt_copy_8" data-name="t-shirt copy 8" class="cls-3">
+    <path class="cls-4" d="M205.728,30.016c8.038-4.462,15.765-8.906,23.574-11.31a42.491,42.491,0,0,1,15.973.1c7.976,2.327,15.578,6.424,23.99,11.214l-6.335,8.925-9.99-4.886H221.451l-9.388,4.886ZM221.451,61.6H253v1.558H221.451V61.6Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M221.8,23.67l8.809-3.911c0.992,1.406,3.7,2.389,6.885,2.389,3.2,0,5.914-.983,6.906-2.389L253.2,23.67V61.8H221.8V23.67Z" transform="translate(-13 -17.969)"/>
+    <text id="CF" class="cls-6" transform="translate(212.398 30.973) scale(1.672 1.673)">CF</text>
+  </g>
+  <g id="t-shirt_copy_9" data-name="t-shirt copy 9" class="cls-3">
+    <path class="cls-4" d="M398.456,100.262c8.039-4.462,15.765-8.906,23.575-11.31a42.492,42.492,0,0,1,15.973.1c7.976,2.327,15.578,6.425,23.99,11.214l-6.335,8.925-9.991-4.885H414.18l-9.389,4.885Zm15.724,31.584h31.551V133.4H414.18v-1.558Z" transform="translate(-13 -17.969)"/>
+    <path class="cls-5" d="M414.524,93.916l8.808-3.911c0.993,1.406,3.7,2.389,6.886,2.389,3.2,0,5.913-.983,6.906-2.389l8.808,3.911v38.129H414.524V93.916Z" transform="translate(-13 -17.969)"/>
+    <text id="RF" class="cls-6" transform="translate(403.455 101.22) scale(1.672 1.673)">RF</text>
+  </g>
+</svg>
