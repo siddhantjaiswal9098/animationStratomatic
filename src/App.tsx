@@ -22,9 +22,9 @@ const App = (props: any) => {
       FIELD_WIDTH: any = 2500,
       FIELD_LENGTH: any = 3000,
       BALL_RADIUS: any = 20,
-      PADDLE_WIDTH: any = 200,
+      PADDLE_WIDTH: any = 50,
       PADDLE_HEIGHT: any = 30,
-
+      BALL_SPEED: any = 20,
       //get the scoreboard element.
       scoreBoard: any = document.body.appendChild(div),
 
@@ -38,13 +38,13 @@ const App = (props: any) => {
 
 
     function startBallMovement() {
-      var num = Math.floor(Math.random() * 25) + 1;
+      var num = Math.floor(Math.random() * 18) + 1;
       num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
       var direction = -1;
-      console.log('direction', direction)
+      console.log('direction', num)
       ball.$velocity = {
         x: num,
-        z: direction * 20
+        z: direction * BALL_SPEED
       };
       ball.$stopped = false;
     }
@@ -82,7 +82,6 @@ const App = (props: any) => {
       if (isPaddle1Collision()) {
         // hitBallBack(paddle1);
         scoreBy('player1');
-
       }
 
       if (isPaddle2Collision()) {
@@ -115,6 +114,7 @@ const App = (props: any) => {
       ballPos.z += ball.$velocity.z;
 
       // add an arc to the ball's flight. Comment this out for boring, flat pong.
+      console.log('ballPos.z', ballPos.z, ballPos.x)
       ballPos.y = -((ballPos.z - 1) * (ballPos.z - 1) / 5000) + 435;
     }
 
@@ -131,7 +131,10 @@ const App = (props: any) => {
     // }
 
     function isPaddle2Collision() {
-      return ball.position.z - BALL_RADIUS <= paddle2.position.z &&
+
+      var num = Math.floor(Math.random() * 0) + 1;
+      num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+      return ball.position.z - BALL_RADIUS - num <= paddle2.position.z &&
         isBallAlignedWithPaddle(paddle2);
     }
 
@@ -152,7 +155,7 @@ const App = (props: any) => {
       addPoint(playerName);
       updateScoreBoard();
       stopBall();
-      setTimeout(reset, 2000);
+      setTimeout(reset, 3000);
     }
 
     function updateScoreBoard() {
