@@ -10,266 +10,149 @@ import * as THREE from 'three';
 console.clear();
 
 const App = (props: any) => {
-  let div = document.createElement('div');
+  // let div = document.createElement('div');
   React.useEffect(() => {
-    // "constants"... 
-    var WIDTH: any = 700,
-      HEIGHT: any = 500,
-      VIEW_ANGLE: any = 45,
-      ASPECT = WIDTH / HEIGHT,
-      NEAR: any = 0.1,
-      FAR: any = 10000,
-      FIELD_WIDTH: any = 2500,
-      FIELD_LENGTH: any = 3000,
-      BALL_RADIUS: any = 20,
-      PADDLE_WIDTH: any = 50,
-      PADDLE_HEIGHT: any = 30,
-      BALL_SPEED: any = 20,
-      //get the scoreboard element.
-      scoreBoard: any = document.body.appendChild(div),
-
-      //declare members.
-      renderer: any, camera: any, mainLight: any,
-      scene: any, ball: any, paddle1: any, paddle2: any, field: any, running: any,
-      score = {
-        player1: 0,
-        player2: 0
-      };
 
 
-    function startBallMovement() {
-      var num = Math.floor(Math.random() * 18) + 1;
-      num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-      var direction = -1;
-      console.log('direction', num)
-      ball.$velocity = {
-        x: num,
-        z: direction * BALL_SPEED
-      };
-      ball.$stopped = false;
-    }
-
-    function processCpuPaddle() {
-      var ballPos = ball.position,
-        cpuPos = paddle2.position;
-
-      if (cpuPos.x - 100 > ballPos.x) {
-        cpuPos.x -= Math.min(cpuPos.x - ballPos.x, 60);
-      } else if (cpuPos.x - 100 < ballPos.x) {
-        cpuPos.x += Math.min(ballPos.x - cpuPos.x, 60);
-      }
-    }
-
-    function processBallMovement() {
-      if (!ball.$velocity) {
-        startBallMovement();
-      }
-
-      if (ball.$stopped) {
-        return;
-      }
-
-      updateBallPosition();
-
-      if (isSideCollision()) {
-        // ball.$velocity.x *= -1;
-
-        ball.$velocity.x = 0;
-        ball.$velocity.z *= 0;
-        scoreBy('player1');
-      }
-
-      if (isPaddle1Collision()) {
-        // hitBallBack(paddle1);
-        scoreBy('player1');
-      }
-
-      if (isPaddle2Collision()) {
-        // hitBallBack(paddle2);
-        scoreBy('player1');
-      }
-
-      if (isPastPaddle1()) {
-        scoreBy('player2');
-      }
-
-      if (isPastPaddle2()) {
-        scoreBy('player1');
-      }
-    }
-
-    function isPastPaddle1() {
-      return ball.position.z > paddle1.position.z + 100;
-    }
-
-    function isPastPaddle2() {
-      return ball.position.z < paddle2.position.z - 100;
-    }
-
-    function updateBallPosition() {
-      var ballPos = ball.position;
-
-      //update the ball's position.
-      ballPos.x += ball.$velocity.x;
-      ballPos.z += ball.$velocity.z;
-
-      // add an arc to the ball's flight. Comment this out for boring, flat pong.
-      console.log('ballPos.z', ballPos.z, ballPos.x)
-      ballPos.y = -((ballPos.z - 1) * (ballPos.z - 1) / 5000) + 435;
-    }
-
-    function isSideCollision() {
-      return false;
-      var ballX = ball.position.x,
-        halfFieldWidth = FIELD_WIDTH / 2;
-      return ballX - BALL_RADIUS < -halfFieldWidth || ballX + BALL_RADIUS > halfFieldWidth;
-    }
-
-    // function hitBallBack(paddle: any) {
-    //   ball.$velocity.x = (ball.position.x - paddle.position.x) / 5;
-    //   ball.$velocity.z *= -1;
-    // }
-
-    function isPaddle2Collision() {
-
-      var num = Math.floor(Math.random() * 0) + 1;
-      num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-      return ball.position.z - BALL_RADIUS - num <= paddle2.position.z &&
-        isBallAlignedWithPaddle(paddle2);
-    }
-
-    function isPaddle1Collision() {
-      return ball.position.z + BALL_RADIUS >= paddle1.position.z &&
-        isBallAlignedWithPaddle(paddle1);
-    }
-
-    function isBallAlignedWithPaddle(paddle: any) {
-      var halfPaddleWidth = PADDLE_WIDTH / 2,
-        paddleX = paddle.position.x,
-        ballX = ball.position.x;
-      return ballX > paddleX - halfPaddleWidth &&
-        ballX < paddleX + halfPaddleWidth;
-    }
-
-    function scoreBy(playerName: any) {
-      addPoint(playerName);
-      updateScoreBoard();
-      stopBall();
-      setTimeout(reset, 3000);
-    }
-
-    function updateScoreBoard() {
-      scoreBoard.innerHTML = 'Balls Pitched: ' + score.player1;
-    }
-
-    function stopBall() {
-      ball.$stopped = true;
-    }
-
-    function addPoint(playerName: any) {
-      score[playerName]++;
-      console.log(score);
-    }
-
-    function startRender() {
-      running = true;
-      render();
-    }
-
-    // function stopRender() {
-    //   running = false;
-    // }
-
-    function render() {
-      if (running) {
-        requestAnimationFrame(render);
-
-        processBallMovement();
-        processCpuPaddle();
-
-        renderer.render(scene, camera);
-      }
-    }
-
-    function reset() {
-      ball.position.set(0, 0, 1400);
-      ball.$velocity = null;
-    }
-
-    function init() {
-      // container = document.getElementById('root');
-
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(WIDTH, HEIGHT);
-      // renderer.setClearColor(0x9999BB, 1);
-      // container.appendChild(renderer.domElement);
-      document.body.appendChild(renderer.domElement);
-
-
-      camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-      camera.position.set(0, 1000, FIELD_LENGTH / 2 + 1500);
-
-      scene = new THREE.Scene();
-      scene.add(camera);
-
-
-
-      let loader = new THREE.TextureLoader();
-
-      loader.load('images/pitchImage.jpg', function (texture: any) {
-        scene.background = texture;
-      });
-
-      var fieldGeometry = new THREE.BoxGeometry(FIELD_WIDTH, 20, FIELD_LENGTH, 1, 1, 1),
-        fieldMaterial = new THREE.MeshLambertMaterial({ color: 0x003300 });
-      field = new THREE.Mesh(fieldGeometry, fieldMaterial);
-      field.position.set(0, -50, 0);
-
-      // scene.add(field);
-      paddle1 = addPaddle();
-      paddle1.position.z = FIELD_LENGTH / 2;
-      paddle2 = addPaddle();
-      paddle2.position.z = -FIELD_LENGTH / 2;
-
-      var ballGeometry = new THREE.SphereGeometry(BALL_RADIUS, 26, 26),
-        ballMaterial = new THREE.MeshLambertMaterial({ color: 0xCC0000 });
-      ball = new THREE.Mesh(ballGeometry, ballMaterial);
-      ball.position.set(0, 0, 1400);
-      scene.add(ball);
-
-
-
-      mainLight = new THREE.HemisphereLight(0xFFFFFF, 0x003300);
-      mainLight.castShadow = true;
-      scene.add(mainLight);
-
-
-      camera.lookAt(field.position);
-
-      updateScoreBoard();
-      startRender();
-
-      // renderer.domElement.addEventListener('mousemove', containerMouseMove);
-      renderer.domElement.style.cursor = 'none';
-    }
-
-    function addPaddle() {
-      var paddleGeometry = new THREE.BoxGeometry(PADDLE_WIDTH, PADDLE_HEIGHT, 10, 1, 1, 1),
-        paddleMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
-        paddle = new THREE.Mesh(paddleGeometry, paddleMaterial);
-      scene.add(paddle);
-      return paddle;
-    }
-
-    // function containerMouseMove(e: any) {
-    //   var mouseX = e.clientX;
-    //   camera.position.x = paddle1.position.x = -((WIDTH - mouseX) / WIDTH * FIELD_WIDTH) + (FIELD_WIDTH / 2);
-    // }
-
-    init();
   }, [])
+  const animationField = () => {
+        // "constants"... 
+        var color = 0x000000;
+
+        var fraction = 0;
+        var lineLength: any;
+            var line: any;
+    
+        // Create your main scene
+        var scene = new THREE.Scene();
+    
+        // Create your main camera
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    
+        // Create lights
+        var light = new THREE.PointLight(0xEEEEEE);
+        light.position.set(20, 0, 20);
+        scene.add(light);
+    
+        var lightAmb = new THREE.AmbientLight(0x777777);
+        scene.add(lightAmb);
+    
+        // Create your renderer
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize((window.innerWidth * 60) / 100, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+    
+        // Set up the main camera
+        camera.position.z = 5;
+    
+        let loader = new THREE.TextureLoader();
+    
+        loader.load('images/field2.png', function (texture: any) {
+          scene.background = texture;
+        });
+    
+        const someFunc = () => {
+          // var points2 = (new THREE.BoxGeometry(10, 10, 10, 4, 4, 4)).vertices;
+          // console.log('points:: --->>', points2)
+    
+          var num = Math.floor(Math.random() * 5) + 1;
+          num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+    
+    
+          console.log('num', num)
+    
+          var num2 = Math.floor(Math.random() * 4) + 1;
+          num2 *= Math.floor(Math.random() * 2) == 1 ? 1 : 1;
+          console.log('num2', num2)
+    
+          var points = [
+            new THREE.Vector3(0, -2.55, 0), 
+            // new THREE.Vector3(2.4, 1.9, 0), 
+            new THREE.Vector3(num, num2, 0), 
+            
+            new THREE.Vector3(5, -0.5, 0)]
+          console.log('points2:: --->>', points) //x, y, z
+    
+    
+          // geometry
+          var geometry = new THREE.BufferGeometry();
+    
+          // attributes
+          let numPoints = points.length;
+          var positions = new Float32Array(numPoints * 3);
+          var colors = new Float32Array(numPoints * 3);
+          var lineDistances = new Float32Array(numPoints * 1);
+    
+          geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
+          geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3));
+          geometry.addAttribute('lineDistance', new THREE.BufferAttribute(lineDistances, 1));
+    
+          // populate
+          var color = new THREE.Color();
+    
+          for (var i = 0, index = 0, l = numPoints; i < l; i++ , index += 3) {
+    
+            positions[index] = points[i].x;
+            positions[index + 1] = points[i].y;
+            color.setHSL(i / l, 1.0, 0.5);
+            colors[index] = color.r;
+            colors[index + 1] = color.g;
+            colors[index + 2] = color.b;
+    
+            if (i > 0) {
+              lineDistances[i] = lineDistances[i - 1] + points[i - 1].distanceTo(points[i]);
+            }
+          }
+    
+          lineLength = lineDistances[numPoints - 1];
+    
+          // material
+          var material = new THREE.LineDashedMaterial({
+    
+            vertexColors: THREE.VertexColors,
+            dashSize: 1, // to be updated in the render loop
+            gapSize: 1e10, // a big number, so only one dash is rendered
+            linewidth: 6
+          });
+    
+          // line
+          line = new THREE.Line(geometry, material);
+          scene.add(line);
+        }
+    
+        someFunc();
+        // var somebool = true;
+    
+        // Rendering function
+        var render = function () {
+          //    setTimeout(() => {
+          //     somebool = false;
+          // }, 4000)
+          // if(somebool) {
+            requestAnimationFrame(render);
+    
+          // }
+          fraction = (fraction + 0.003) % 1;
+          line.material.dashSize = fraction * lineLength;
+    
+          // setTimeout(() => {
+          //   window.cancelAnimationFrame( requestID )
+          // }, 400)
+    
+          // Update the color to set
+          if (color < 0xdddddd) color += 0x0000ff;
+          renderer.render(scene, camera);
+        };
+    
+    
+        render();
+  }
   return (
-    <div />
+    <div > 
+      <div>
+        <button onClick={() => animationField()}>NEXT BALL</button>
+      </div>
+    </div>
   )
 }
 
