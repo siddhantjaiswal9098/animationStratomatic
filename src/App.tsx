@@ -3,6 +3,8 @@ import * as THREE from 'three';
 
 const App = (props: any) => {
   const [shouldShowColors, setShouldShowColors ] = React.useState(true)
+  const [speedOfBall, setSpeedOfBall ] = React.useState(0.003)
+  
   let requestID: any;
   React.useEffect(() => {
     animationField();
@@ -10,7 +12,7 @@ const App = (props: any) => {
 
   React.useEffect(() => {
     animationField()
-  }, [shouldShowColors]);
+  }, [shouldShowColors, speedOfBall]);
 
   let tempSomeFunc: any;
   const animationField = () => {
@@ -117,7 +119,7 @@ const App = (props: any) => {
     // Rendering function
     var render = function () {
       requestID = requestAnimationFrame(render);
-      fraction = (fraction + 0.003) % 1;
+      fraction = (fraction + speedOfBall) % 1;
       line.material.dashSize = fraction * lineLength;
 
       if (color < 0xdddddd) color += 0x0000ff;
@@ -131,11 +133,15 @@ const App = (props: any) => {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-around', padding: 5 }}>
-        <button onClick={animationField}>NEXT BALL</button>
-        <button onClick={() => tempSomeFunc()}>ADD NEW BALL</button>
-        <button onClick={() => window.cancelAnimationFrame(requestID)}>STOP</button>
-        <button onClick={toggleColour}>SHOW/HIDE COLOURS</button>
-        
+        <button style={{padding: 5 }} onClick={animationField}>NEXT BALL</button>
+        <button style={{padding: 5 }} onClick={() => tempSomeFunc()}>ADD NEW BALL</button>
+        <button style={{padding: 5 }} onClick={() => window.cancelAnimationFrame(requestID)}>STOP</button>
+        <button style={{padding: 5 }} onClick={toggleColour}>SHOW/HIDE COLOURS</button>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        Adjust Ball Speed
+        <button style={{padding: '5px 20px 5px 20px', margin: 5 }} onClick={() => setSpeedOfBall(speedOfBall-.001)}>-</button>
+        <button style={{padding: '5px 20px 5px 20px', margin: 5 }} onClick={() => setSpeedOfBall(speedOfBall+.001)}>+</button>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }} id='divID'></div>
     </div>
