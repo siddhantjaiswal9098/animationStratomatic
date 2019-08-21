@@ -57,7 +57,7 @@ const Projection = (props: any) => {
         // points
         projection = (x: any, y: any, z: any, type: any) => {
             textValue++;
-            var num2 = Math.floor(Math.random() * 50) - 15 ;
+            var num2 = Math.floor(Math.random() * 20) - 5 ;
            // num2 *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
             console.log("num===", num2)
             x = num2;
@@ -67,7 +67,7 @@ const Projection = (props: any) => {
             //endY = y;
             endZ = z;
 
-            var randomY = Math.floor(-10 + Math.random()*(10 + 1 + 10))
+            var randomY = Math.floor(-3 + Math.random()*(6 + 1 + 3))
             y = randomY;
             endY = y;
             console.log("inside projection===", x, y, z)
@@ -104,9 +104,9 @@ const Projection = (props: any) => {
             }
 
             if (type == "left") {
-                var middle = new THREE.Vector3((20 + x) / 2, (50 + y) / 2+10, 0);
+                var middle = new THREE.Vector3((20 + x) / 2, (50 + y) / 2+5, 0);
             } else {
-                var middle = new THREE.Vector3((6 + x) / 2, (50 + y) / 2+10, 0);
+                var middle = new THREE.Vector3((6 + x) / 2, (50 + y) / 2+5, 0);
             }
 
             var end = new THREE.Vector3(x, y, 50);
@@ -168,7 +168,7 @@ const Projection = (props: any) => {
     function animate() {
         if (nEnd > 11800) {
             isCall = false;
-            var circleGeometry = new THREE.CircleGeometry(2, 16);
+            var circleGeometry = new THREE.CircleGeometry(1, 16);
             var circleMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
             var circle = new THREE.Mesh(circleGeometry, circleMaterial);
             console.log("call endX==", endX, endY, endZ)
@@ -179,7 +179,7 @@ const Projection = (props: any) => {
             fontLoader.load('gentilis_bold.typeface.json', function (font) {
             var textGeometry = new THREE.TextGeometry( JSON.stringify(textValue), {   
                     font: font,             
-                    size: 1.5,
+                    size: 1.2,
                     height: 0.01
             } );
 
