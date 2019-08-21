@@ -40,7 +40,7 @@ const App = (props: any) => {
     function startBallMovement() {
       var num = Math.floor(Math.random() * 18) + 1;
       num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-      var direction = 1;
+      var direction = -1;
       console.log('direction', num)
       ball.$velocity = {
         x: num,

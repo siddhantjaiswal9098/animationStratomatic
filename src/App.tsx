@@ -104,7 +104,7 @@ const App = (props: any) => {
       // material
       var material = new THREE.LineDashedMaterial({
         vertexColors: THREE.VertexColors,
-        dashSize: 1, // to be updated in the render loop
+        dashSize: 10, // to be updated in the render loop
         gapSize: 1e10, // a big number, so only one dash is rendered
         linewidth: 6
       });
