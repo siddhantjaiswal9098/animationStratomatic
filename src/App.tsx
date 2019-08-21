@@ -89,10 +89,16 @@ const App = (props: any) => {
         positions[index] = points[i].x;
         positions[index + 1] = points[i].y;
         color.setHSL(i / l, 1.0, 0.5);
-        if(shouldShowColors) {
+        console.log('color.r', color.r)
+        if(!shouldShowColors) {
           colors[index] = color.r;
           colors[index + 1] = color.g;
           colors[index + 2] = color.b;
+        } else {
+          colors[index] = 1;
+          colors[index + 1] = 1;
+          colors[index + 2] = 1;
+          
         }
         if (i > 0) {
           lineDistances[i] = lineDistances[i - 1] + points[i - 1].distanceTo(points[i]);
@@ -106,11 +112,12 @@ const App = (props: any) => {
         vertexColors: THREE.VertexColors,
         dashSize: 10, // to be updated in the render loop
         gapSize: 1e10, // a big number, so only one dash is rendered
-        linewidth: 6
+        linewidth: 7
       });
 
       // line
       line = new THREE.Line(geometry, material);
+      line.computeLineDistances();
       scene.add(line);
     }
 
