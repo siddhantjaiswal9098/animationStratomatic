@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as THREE from 'three';
+import './App.css';
 
 const App = (props: any) => {
   const [shouldShowColors, setShouldShowColors ] = React.useState(true)
@@ -36,8 +37,11 @@ const App = (props: any) => {
     scene.add(lightAmb);
 
     // Create your renderer
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth * 60 / 100, window.innerHeight- 50);
+    var myCanvasElement: any = document.createElement("CANVAS");
+    myCanvasElement.style.width = '80%'; 
+    myCanvasElement.style.height = '60%'; 
+    var renderer = new THREE.WebGLRenderer({ canvas: myCanvasElement });
+    renderer.setSize(779.4, 619);
     // divID
 
     let elementOnDom: any = document.getElementById("divID")
@@ -151,6 +155,9 @@ const App = (props: any) => {
         <button style={{padding: '5px 20px 5px 20px', margin: 5 }} onClick={() => setSpeedOfBall(speedOfBall+.001)}>+</button>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }} id='divID'></div>
+
+    {/* width: 90%; */}
+    {/* height: 80%; */}
     </div>
   )
 }
