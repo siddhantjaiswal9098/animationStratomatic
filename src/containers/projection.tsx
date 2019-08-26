@@ -49,11 +49,14 @@ const Projection = (props: any) => {
         // axes
         scene.add(new THREE.AxesHelper(20));
 
-        let loader = new THREE.TextureLoader();
+        // let loader = new THREE.TextureLoader();
 
-        loader.load('images/field4.png', function (texture: any) {
-            scene.background = texture;
-        });
+        // loader.load('images/field4.png', function (texture: any) {
+        //     scene.background = texture;
+        // });
+
+        scene.background = new THREE.Color( 'white' );
+
         // points
         projection = (x: any, y: any, z: any, type: any) => {
             textValue++;

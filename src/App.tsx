@@ -38,8 +38,6 @@ const App = (props: any) => {
 
     // Create your renderer
     var myCanvasElement: any = document.createElement("CANVAS");
-    myCanvasElement.style.width = '80%'; 
-    myCanvasElement.style.height = '60%'; 
     var renderer = new THREE.WebGLRenderer({ canvas: myCanvasElement });
     renderer.setSize(779.4, 619);
     // divID
@@ -123,6 +121,7 @@ const App = (props: any) => {
       line = new THREE.Line(geometry, material);
       line.computeLineDistances();
       scene.add(line);
+
     }
 
     tempSomeFunc();

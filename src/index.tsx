@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import Animation from './containers/animation';
+import Pitcher from './containers/pitcher'
 import { Provider } from 'react-redux';
 import App from './App'
 import TopView from './containers/topview';
@@ -22,6 +23,7 @@ ReactDOM.render(
           <Route exact path="/topview" component={TopView} />
           <Route exact path="/animation" component={Animation} />
           <Route exact path="/projection" component={Projection} />
+          <Route exact path="/pitcher" component={Pitcher} />
         </Switch>
     </Router>
   </Provider>,
