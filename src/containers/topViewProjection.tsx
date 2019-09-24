@@ -10,8 +10,7 @@ import * as THREE from 'three';
 console.clear();
 
 const Projection = (props: any) => {
-    var mesh: any, renderer: any, scene: any, camera: any;
-    var textValue:any = 0;
+    var mesh: any,mesh2: any,  renderer: any, scene: any, camera: any;
     var nEnd = 0, nMax: any, nStep = 90, endX: number, endY: number, endZ: number; // 30 faces * 3 vertices/face
     var isCall = false;
     init();
@@ -23,6 +22,7 @@ const Projection = (props: any) => {
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
+        renderer.setSize(779.4, 619);
 
         // scene
         scene = new THREE.Scene();
@@ -49,17 +49,15 @@ const Projection = (props: any) => {
         // axes
         scene.add(new THREE.AxesHelper(20));
 
-        // let loader = new THREE.TextureLoader();
+        let loader = new THREE.TextureLoader();
 
-        // loader.load('images/field4.png', function (texture: any) {
-        //     scene.background = texture;
-        // });
+        loader.load('images/field2.png', function (texture: any) {
+            scene.background = texture;
+        });
 
-        scene.background = new THREE.Color( 'white' );
 
         // points
         projection = (x: any, y: any, z: any, type: any) => {
-            textValue++;
             var num2 = Math.floor(Math.random() * 20) - 5 ;
            // num2 *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
             console.log("num===", num2)
@@ -70,7 +68,7 @@ const Projection = (props: any) => {
             //endY = y;
             endZ = z;
 
-            var randomY = Math.floor(-3 + Math.random()*(6 + 1 + 3))
+            var randomY = Math.floor(-3 + Math.random()*(40 + 1 + 3))
             y = randomY;
             endY = y;
             console.log("inside projection===", x, y, z)
@@ -79,20 +77,45 @@ const Projection = (props: any) => {
             // geometry
             var numPoints = 100;
 
-            if (type == "left") {
-                var start = new THREE.Vector3(20, 50, -50);
-            } else {
-                var start = new THREE.Vector3(6, 50, -50);
-            }
+                var start = new THREE.Vector3(10, -20, 0);
+                
+          
+                var middle = new THREE.Vector3((10 + x) / 2, (-20 + y) / 2+5, 90);
+            
+                var end = new THREE.Vector3(x, y, 0);
 
-            if (type == "left") {
-                var middle = new THREE.Vector3((20 + x) / 2, (50 + y) / 2+5, 0);
-            } else {
-                var middle = new THREE.Vector3((6 + x) / 2, (50 + y) / 2+5, 0);
-            }
-
-            var end = new THREE.Vector3(x, y, 50);
+            
+                var start2 = new THREE.Vector3(x, y, 0);
+                var middle2 = new THREE.Vector3((50 + x) / 2, (-20 + y) / 2+5, 50);
+                var end2 = new THREE.Vector3(55, 0, 0);
+                
             console.log("call 103")
+
+
+
+
+
+            var curveQuad2 = new THREE.QuadraticBezierCurve3(start2, middle2, end2);
+
+            var geometry2: any = new THREE.TubeGeometry(curveQuad2, numPoints, 0.5, 20, false);
+            // to buffer goemetry
+            geometry2 = new THREE.BufferGeometry().fromGeometry(geometry2);
+            nMax = geometry2.attributes.position.count;
+
+            // material
+            var material2 = new THREE.MeshPhongMaterial({
+                color: 0x00ffff,
+                side: THREE.DoubleSide
+            });
+
+            // mesh
+            mesh2 = new THREE.Mesh(geometry2, material2);       
+            scene.add(mesh2);
+
+
+
+
+
 
 
             var curveQuad = new THREE.QuadraticBezierCurve3(start, middle, end);
@@ -111,12 +134,16 @@ const Projection = (props: any) => {
             // mesh
             mesh = new THREE.Mesh(geometry, material);       
             scene.add(mesh);
+
+
+
+            
             animate();
         }
         endX = 15;
         endY = 0;
         endZ = 20;
-        projection(-15, 0, 20, "left");
+        projection(0, 50, -50, "left");
 
     }
 
@@ -124,30 +151,8 @@ const Projection = (props: any) => {
     function animate() {
         if (nEnd > 11800) {
             isCall = false;
-            var circleGeometry = new THREE.CircleGeometry(1, 16);
-            var circleMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-            var circle = new THREE.Mesh(circleGeometry, circleMaterial);
             console.log("call endX==", endX, endY, endZ)
-            circle.position.set(endX, endY, 50);
-
-            scene.add(circle);
-            var fontLoader = new THREE.FontLoader();
-            fontLoader.load('gentilis_bold.typeface.json', function (font) {
-            var textGeometry = new THREE.TextGeometry( JSON.stringify(textValue), {   
-                    font: font,             
-                    size: 1.2,
-                    height: 0.01
-            } );
-
-             console.log("txt_mesh==", textGeometry)
-                var txt_mat = new THREE.MeshPhongMaterial({ color: "red" });
-                var txt_mesh = new THREE.Mesh(textGeometry, txt_mat);
-
-                txt_mesh.position.set(endX- 0.7, endY- 0.5, 50)
-            
-              scene.add(txt_mesh);
-              renderer.render(scene, camera);
-        });
+            renderer.render(scene, camera);
 
             
         } else {
@@ -160,6 +165,8 @@ const Projection = (props: any) => {
             nEnd = (nEnd + nStep) % nMax;
 
             mesh.geometry.setDrawRange(0, nEnd);
+            mesh2.geometry.setDrawRange(0, nEnd);
+
 
             renderer.render(scene, camera);
         }
@@ -168,8 +175,7 @@ const Projection = (props: any) => {
     return (
         <div >
             <div>
-                <button onClick={() => projection(-2, 1, 20, "left")}>Left Projection</button>
-                <button onClick={() => projection(-2, 1, 20, "right")}>Right Projection</button>
+                <button onClick={() => projection(0, 50, -50, "left")}>Next Ball</button>
             </div>
         </div>
     )
