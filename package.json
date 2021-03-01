@@ -20,7 +20,7 @@
     "redux-localstorage": "^0.4.1",
     "redux-promise-middleware": "^6.1.0",
     "redux-thunk": "^2.3.0",
-    "three": "^0.107.0",
+    "three": "^0.125.0",
     "three-gltf-loader": "^1.107.0",
     "three-mtl-loader": "^1.0.2",
     "three-obj-loader": "^1.1.3",
